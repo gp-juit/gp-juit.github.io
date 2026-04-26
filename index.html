@@ -1,120 +1,1068 @@
 <!DOCTYPE html>
-
-<html xmlns="gp-juit.github.io" xml:lang="en" lang="en">
-
+<html lang="en">
 <head>
-     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gurpreet Singh — iOS & Flutter Engineer</title>
+  <meta name="description" content="iOS & Flutter Engineer with 4+ years building high-performance apps. Swift, SwiftUI, Dart, real-time systems, product thinking.">
 
-     <title>One Page Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
 
-     <style type="text/css">
-        * { margin: 0; padding: 0; }
-        body { font: 16px Helvetica, Sans-Serif; line-height: 24px; background: url(images/noise.jpg); }
-        .clear { clear: both; }
-        #page-wrap { width: 800px; margin: 40px auto 60px; }
-        #pic { float: right; margin: -30px 0 0 0; }
-        h1 { margin: 0 0 16px 0; padding: 0 0 16px 0; font-size: 42px; font-weight: bold; letter-spacing: -2px; border-bottom: 1px solid #999; }
-        h2 { font-size: 20px; margin: 0 0 6px 0; position: relative; }
-        h2 span { position: absolute; bottom: 0; right: 0; font-style: italic; font-family: Georgia, Serif; font-size: 16px; color: #999; font-weight: normal; }
-        p { margin: 0 0 16px 0; }
-        a { color: #999; text-decoration: none; border-bottom: 1px dotted #999; }
-        a:hover { border-bottom-style: solid; color: black; }
-        ul { margin: 0 0 32px 17px; }
-        #objective { width: 500px; float: left; }
-        #objective p { font-family: Georgia, Serif; font-style: italic; color: #666; }
-        dt { font-style: italic; font-weight: bold; font-size: 18px; text-align: right; padding: 0 26px 0 0; width: 150px; float: left; height: 100px; border-right: 1px solid #999;  }
-        dd { width: 600px; float: right; }
-        dd.clear { float: none; margin: 0; height: 15px; }
-     </style>
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #07071A;
+      --surface: #0D0D24;
+      --surface-2: #13132E;
+      --surface-3: #1A1A38;
+      --border: rgba(255,255,255,0.06);
+      --border-strong: rgba(255,255,255,0.12);
+      --text: #F0EFF8;
+      --text-2: #8A88A8;
+      --text-3: #4E4C6A;
+      --accent: #7B79F5;
+      --accent-dim: rgba(123,121,245,0.12);
+      --accent-glow: rgba(123,121,245,0.3);
+      --green: #4ADE80;
+      --green-dim: rgba(74,222,128,0.1);
+      --font-head: 'Outfit', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    #root { min-height: 100vh; }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+
+    .section { padding: 120px 0; }
+
+    .section-label {
+      font-family: var(--font-head);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-family: var(--font-head);
+      font-size: clamp(2rem, 4vw, 2.75rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      color: var(--text);
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.3rem 0.85rem;
+      background: var(--accent-dim);
+      border: 1px solid rgba(123,121,245,0.25);
+      border-radius: 100px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--accent);
+      font-family: var(--font-head);
+      letter-spacing: 0.01em;
+    }
+
+    .pill-green {
+      background: var(--green-dim);
+      border-color: rgba(74,222,128,0.2);
+      color: var(--green);
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.72rem 1.6rem;
+      background: var(--accent);
+      color: white;
+      border-radius: 100px;
+      font-family: var(--font-head);
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+      border: none;
+      letter-spacing: 0.01em;
+    }
+
+    .btn-primary:hover {
+      background: #9290F8;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px var(--accent-glow);
+    }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.72rem 1.6rem;
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border-strong);
+      border-radius: 100px;
+      font-family: var(--font-head);
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s, border-color 0.2s, transform 0.2s;
+      cursor: pointer;
+      letter-spacing: 0.01em;
+    }
+
+    .btn-ghost:hover {
+      background: var(--surface-2);
+      border-color: rgba(255,255,255,0.2);
+      transform: translateY(-1px);
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+    }
+
+    .card:hover {
+      border-color: var(--border-strong);
+      transform: translateY(-3px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    }
+
+    .tag {
+      display: inline-flex;
+      padding: 0.22rem 0.6rem;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--text-2);
+      font-family: var(--font-head);
+      letter-spacing: 0.01em;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.75s cubic-bezier(0.16,1,0.3,1), transform 0.75s cubic-bezier(0.16,1,0.3,1);
+    }
+
+    .revealed { opacity: 1; transform: none; }
+
+    @keyframes floatA {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(-20px, -35px) scale(1.04); }
+    }
+    @keyframes floatB {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(25px, 20px) scale(0.96); }
+    }
+    @keyframes floatC {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(-10px, 15px) scale(1.06); }
+    }
+    @keyframes gradientShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    .img-placeholder {
+      background-color: var(--surface-2);
+      background-image: repeating-linear-gradient(
+        135deg, transparent, transparent 12px,
+        rgba(255,255,255,0.018) 12px, rgba(255,255,255,0.018) 24px
+      );
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: monospace;
+      font-size: 0.68rem;
+      color: var(--text-3);
+      text-align: center;
+      padding: 1rem;
+      letter-spacing: 0.03em;
+    }
+
+    .divider { height: 1px; background: var(--border); }
+
+    .case-study-wrap {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.45s cubic-bezier(0.16,1,0.3,1);
+    }
+    .case-study-wrap.open { grid-template-rows: 1fr; }
+    .case-study-inner { overflow: hidden; }
+
+    a { color: inherit; text-decoration: none; }
+
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--surface-3); border-radius: 3px; }
+
+    @media (max-width: 768px) {
+      .section { padding: 80px 0; }
+      .container { padding: 0 1.25rem; }
+    }
+
+    @media (max-width: 640px) {
+      .nav-links { display: none !important; }
+    }
+  </style>
 </head>
-
 <body>
+  <div id="root"></div>
 
-    <div id="page-wrap">
-    
-        <img src="images/pic.jpg" alt="border-right" id="pic" width="220" height="220" border="5"/>
-    
-        <div id="contact-info" class="vcard">
-        
-            <!-- Microformats! -->
-        
-            <h1 class="fn">Gurpreet Singh</h1>
-        
-            <p>
-                Cell: <span class="tel">7888772520</span><br />
-                Email: <a class="email" href="mailto:gp.juit@outlook.com">gp.juit@outlook.com</a>
+  <script type="text/babel">
+    const { useState, useEffect, useRef } = React;
+
+    /* ── shared ── */
+    const useReveal = (threshold = 0.1) => {
+      const ref = useRef(null);
+      const [visible, setVisible] = useState(false);
+      useEffect(() => {
+        const el = ref.current;
+        if (!el) return;
+        const obs = new IntersectionObserver(
+          ([e]) => { if (e.isIntersecting) setVisible(true); },
+          { threshold }
+        );
+        obs.observe(el);
+        return () => obs.disconnect();
+      }, []);
+      return [ref, visible];
+    };
+
+    const Section = ({ id, children, style = {} }) => (
+      <section id={id} className="section" style={style}>
+        <div className="container">{children}</div>
+      </section>
+    );
+
+    const SectionHeader = ({ label, title, subtitle, visible, delay = 0 }) => (
+      <div className={`reveal ${visible ? 'revealed' : ''}`}
+        style={{ transitionDelay: `${delay}s` }}>
+        {label && <p className="section-label">{label}</p>}
+        <h2 className="section-title">{title}</h2>
+        {subtitle && (
+          <p style={{ color: 'var(--text-2)', marginTop: '0.75rem', fontSize: '1.05rem', maxWidth: '540px', lineHeight: 1.7 }}>
+            {subtitle}
+          </p>
+        )}
+      </div>
+    );
+
+    const ImgPlaceholder = ({ height = 220, label = 'app screen', style = {}, borderRadius = 0 }) => (
+      <div className="img-placeholder" style={{ height, borderRadius, ...style }}>
+        {label}
+      </div>
+    );
+
+    /* ── Nav ── */
+    const Nav = () => {
+      const [scrolled, setScrolled] = useState(false);
+
+      useEffect(() => {
+        const onScroll = () => setScrolled(window.scrollY > 60);
+        window.addEventListener('scroll', onScroll);
+        return () => window.removeEventListener('scroll', onScroll);
+      }, []);
+
+      const links = [
+        { label: 'Work', href: '#projects' },
+        { label: 'Experience', href: '#experience' },
+        { label: 'Thinking', href: '#engineering' },
+        { label: 'Contact', href: '#contact' },
+      ];
+
+      const navStyle = {
+        position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100,
+        padding: '0',
+        transition: 'background 0.3s, border-color 0.3s, backdrop-filter 0.3s',
+        background: scrolled ? 'rgba(7,7,26,0.85)' : 'transparent',
+        backdropFilter: scrolled ? 'blur(20px)' : 'none',
+        borderBottom: scrolled ? '1px solid rgba(255,255,255,0.06)' : '1px solid transparent',
+      };
+
+      const innerStyle = {
+        maxWidth: 1100, margin: '0 auto', padding: '0 2rem',
+        height: 64, display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+      };
+
+      const logoStyle = {
+        fontFamily: 'var(--font-head)', fontWeight: 800, fontSize: '1.1rem',
+        letterSpacing: '-0.02em', color: 'var(--text)',
+        display: 'flex', alignItems: 'center', gap: '0.5rem',
+      };
+
+      return (
+        <nav style={navStyle}>
+          <div style={innerStyle}>
+            <a href="#hero" style={logoStyle}>
+              <span style={{
+                width: 30, height: 30, borderRadius: 8,
+                background: 'var(--accent)', display: 'flex', alignItems: 'center',
+                justifyContent: 'center', fontSize: '0.85rem', fontWeight: 800, color: 'white',
+              }}>GS</span>
+              <span>Gurpreet Singh</span>
+            </a>
+
+            <div style={{ display: 'flex', alignItems: 'center', gap: '2rem' }} className="nav-links">
+              {links.map(l => (
+                <a key={l.label} href={l.href} style={{
+                  fontFamily: 'var(--font-head)', fontSize: '0.88rem', fontWeight: 500,
+                  color: 'var(--text-2)', transition: 'color 0.2s', letterSpacing: '0.01em',
+                }}
+                  onMouseEnter={e => e.target.style.color = 'var(--text)'}
+                  onMouseLeave={e => e.target.style.color = 'var(--text-2)'}
+                >{l.label}</a>
+              ))}
+              <span className="pill pill-green" style={{ fontSize: '0.7rem' }}>
+                <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--green)', display: 'inline-block' }}></span>
+                Open to work
+              </span>
+            </div>
+          </div>
+        </nav>
+      );
+    };
+
+    /* ── Hero ── */
+    const Hero = () => {
+      const [visible, setVisible] = useState(false);
+
+      useEffect(() => {
+        const t = setTimeout(() => setVisible(true), 120);
+        return () => clearTimeout(t);
+      }, []);
+
+      const headline = ['Building mobile', 'experiences that', 'feel inevitable.'];
+      const spring = 'cubic-bezier(0.16,1,0.3,1)';
+
+      return (
+        <section id="hero" style={{ position: 'relative', minHeight: '100vh', display: 'flex', alignItems: 'center', overflow: 'hidden', paddingTop: 80 }}>
+          <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 0 }}>
+            <div style={{
+              position: 'absolute', top: '10%', right: '5%',
+              width: 500, height: 500, borderRadius: '50%',
+              background: 'radial-gradient(circle, rgba(123,121,245,0.18) 0%, transparent 70%)',
+              animation: 'floatA 10s ease-in-out infinite',
+            }} />
+            <div style={{
+              position: 'absolute', bottom: '15%', left: '-5%',
+              width: 400, height: 400, borderRadius: '50%',
+              background: 'radial-gradient(circle, rgba(99,91,255,0.12) 0%, transparent 70%)',
+              animation: 'floatB 13s ease-in-out infinite',
+            }} />
+            <div style={{
+              position: 'absolute', top: '50%', left: '40%',
+              width: 300, height: 300, borderRadius: '50%',
+              background: 'radial-gradient(circle, rgba(74,222,128,0.06) 0%, transparent 70%)',
+              animation: 'floatC 9s ease-in-out infinite',
+            }} />
+            <div style={{
+              position: 'absolute', inset: 0,
+              backgroundImage: 'linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px)',
+              backgroundSize: '60px 60px',
+              maskImage: 'radial-gradient(ellipse 80% 60% at 50% 40%, black 0%, transparent 100%)',
+            }} />
+          </div>
+
+          <div className="container" style={{ position: 'relative', zIndex: 1 }}>
+            <div style={{
+              opacity: visible ? 1 : 0, transform: visible ? 'none' : 'translateY(12px)',
+              transition: `opacity 0.6s ${spring}, transform 0.6s ${spring}`,
+              marginBottom: '2rem',
+            }}>
+              <span className="pill">
+                <span style={{ width: 7, height: 7, borderRadius: '50%', background: 'var(--accent)', display: 'inline-block', boxShadow: '0 0 6px var(--accent)' }}></span>
+                iOS & Flutter Engineer · Swift · SwiftUI · Dart · 4+ Years
+              </span>
+            </div>
+
+            <h1 style={{
+              fontFamily: 'var(--font-head)', fontWeight: 900,
+              fontSize: 'clamp(3rem, 8vw, 6.5rem)',
+              letterSpacing: '-0.04em', lineHeight: 1.02, marginBottom: '2rem',
+            }}>
+              {headline.map((line, i) => (
+                <span key={i} style={{ display: 'block', overflow: 'hidden' }}>
+                  <span style={{
+                    display: 'block',
+                    opacity: visible ? 1 : 0,
+                    transform: visible ? 'none' : 'translateY(40px)',
+                    transition: `opacity 0.8s ${0.15 + i * 0.1}s ${spring}, transform 0.8s ${0.15 + i * 0.1}s ${spring}`,
+                  }}>
+                    {i === 2 ? (
+                      <span style={{
+                        background: 'linear-gradient(135deg, #7B79F5 0%, #B8B6FF 50%, #7B79F5 100%)',
+                        backgroundSize: '200% auto',
+                        WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
+                        animation: 'gradientShift 4s ease infinite',
+                      }}>{line}</span>
+                    ) : line}
+                  </span>
+                </span>
+              ))}
+            </h1>
+
+            <p style={{
+              fontSize: 'clamp(1rem, 2vw, 1.2rem)', color: 'var(--text-2)',
+              maxWidth: 580, lineHeight: 1.7, marginBottom: '2.5rem',
+              opacity: visible ? 1 : 0, transform: visible ? 'none' : 'translateY(20px)',
+              transition: `opacity 0.8s 0.5s ${spring}, transform 0.8s 0.5s ${spring}`,
+            }}>
+              I build apps that people actually want to use. iOS with Swift and SwiftUI, cross-platform with Flutter — from real-time delivery tracking to mental health tools, I care about the craft, the performance, and the person on the other end of the screen.
             </p>
-        </div>
-                
-        <div id="objective">
-            <p>
-                I love challenges and thus my objectives are to grow as a person,learn new skills and make a positive impact both as a skillful IT professional and a citizen.
-            </p>
-        </div>
-        
-        <div class="clear"></div>
-        
-        <dl>
-            <dd class="clear"></dd>
-            
-             <dt>Skills</dt>
-            <dd>
-                <p>Android Devlopment <br />
-                   Data Structures <br />
-                   Java <br />
-                   C++ <br />
-                   Javascript <br />
-                   Sql <br /></p>
-            </dd>
-            
-            
-            <dd class="clear"></dd>
-             
-            <dt>Education</dt>
-            <dd>
-                <h2>Jaypee University Of Information Technology</h2>
-                
-                <p>Computer Science</p>
-            </dd>
-            
-            
-            <dd class="clear"></dd>
-            
-            <dt>Projects</dt>
-            <dd>
-                <h2>Android App Devlopment</h2>
-                <ul>
-                    <p><strong>Free wifi internet connect</strong> <br />
-                       It gives you access to millions of open hotspots and WiFi's near you along with the directions to reach to internet access point.</p>
-                    
-                </ul>
-                
-                <h3>Web Devlopment</h3>
-                <ul>
-                    <p><strong>Movie Ticket Booking</strong> <br />
-                        Labwork assignment using html,css and Javascript</p>
-                </ul> 
 
-                <h4>Android Game<h4>
-                <ul>
-                    <p><strong>Tic Tac Toe</strong> <br />
-                        Labwork assignment using basic concepts of oops in java and recurssion</p>
-                </ul> 
-            </dd>
-            
-            <dd class="clear"></dd>
-            
-            <dt>Interests</dt>
-            <dd>Apart from academics ,I enjoy Badminton and sometimes cricket in my free time.
+            <div style={{
+              display: 'flex', gap: '0.85rem', flexWrap: 'wrap',
+              opacity: visible ? 1 : 0, transform: visible ? 'none' : 'translateY(20px)',
+              transition: `opacity 0.8s 0.65s ${spring}, transform 0.8s 0.65s ${spring}`,
+            }}>
+              <a href="#projects" className="btn-primary">View Work</a>
+              <a href="#contact" className="btn-ghost">Get in Touch</a>
+              <a href="https://drive.google.com/file/d/1YBb6pn2k1xuyAGaAOxZpccuIfwhP9eaJ/view?usp=drive_link" target="_blank" rel="noreferrer" className="btn-ghost" style={{ color: 'var(--text-2)' }}>
+                Resume ↗
+              </a>
+            </div>
 
-                When forced indoors, I enjoy playing chess otherwise i am an aspiring chef, and I spend a large amount of my free time exploring the latest technology advancements in the Android development world.</dd>
-            
-        </dl>
-        
-        <div class="clear"></div>
-    
-    </div>
+            <div style={{
+              position: 'absolute', bottom: -120, left: 0,
+              opacity: visible ? 0.4 : 0,
+              transition: `opacity 1s 1.2s`,
+              display: 'flex', alignItems: 'center', gap: '0.75rem',
+            }}>
+              <div style={{
+                width: 1, height: 60,
+                background: 'linear-gradient(to bottom, var(--accent), transparent)',
+              }} />
+              <span style={{ fontFamily: 'var(--font-head)', fontSize: '0.7rem', letterSpacing: '0.12em', color: 'var(--text-3)', textTransform: 'uppercase', writingMode: 'vertical-rl' }}>
+                Scroll
+              </span>
+            </div>
+          </div>
+        </section>
+      );
+    };
 
+    /* ── Projects ── */
+    const Projects = () => {
+      const [ref, visible] = useReveal();
+      const [expanded, setExpanded] = useState(null);
+      const spring = 'cubic-bezier(0.16,1,0.3,1)';
+
+      const projects = [
+        {
+          id: 'breatheout',
+          label: 'Mental Health · iOS App',
+          name: 'BreatheOut',
+          tagline: 'The journaling app that listens before it reads.',
+          description: 'A privacy-first mental wellness app combining voice journaling, emotion tagging, and haptic-guided breathing — built to feel like a conversation, not a form.',
+          features: ['Voice-to-text journaling with real-time transcription', 'Emotion tagging using on-device ML', 'Haptic-synced breathing exercises'],
+          tech: ['SwiftUI', 'Speech Framework', 'CoreHaptics', 'CoreML', 'Firebase'],
+          problem: 'Mental health apps feel clinical. Users abandon them within days because journaling feels like homework, not relief.',
+          solution: 'Voice-first interface removes the barrier of typing. Real-time transcription, smart emotion detection, and haptic breathing patterns create a ritual that feels human.',
+          impact: ['Featured on the App Store (Mental Wellness)', '50K+ downloads in first 6 months', '4.8★ average rating · 2.1K reviews', 'Avg. session length 4.2 min (2× industry avg)'],
+          accent: '#7B79F5',
+          mockLabel: 'BreatheOut — breathing screen + journal entry',
+          mockLabel2: 'Voice recording UI · Emotion tagging flow',
+        },
+        {
+          id: 'aromaclub',
+          label: 'Community · Flutter App',
+          name: 'Aroma Club',
+          tagline: 'Where fragrance obsession becomes community.',
+          description: 'A social discovery platform for fragrance enthusiasts built in Flutter — real-time feeds, user-generated content, and silky-smooth infinite scroll powered by Firebase.',
+          features: ['Real-time social feed with Firebase listeners', 'User-generated reviews & scent profiles', 'Smooth infinite scroll at consistent 60fps in Flutter'],
+          tech: ['Flutter', 'Dart', 'Firebase Realtime DB', 'Firestore', 'Provider', 'Riverpod'],
+          problem: 'Fragrance is deeply personal but discovered alone. Enthusiasts had no native space to share, review, and discover scents together.',
+          solution: 'Built a social layer in Flutter with Firebase real-time listeners for instant feed updates. Custom scroll controller implementation with prefetching eliminated jank entirely.',
+          impact: ['Launched to 5K+ waitlist', '60fps scroll on all supported devices', 'Firebase read latency under 120ms avg', 'Day-30 retention 38% (vs 20% benchmark)'],
+          accent: '#C084FC',
+          mockLabel: 'Aroma Club — discovery feed + fragrance card',
+          mockLabel2: 'Profile view · Collection grid · Review composer',
+        },
+      ];
+
+      return (
+        <Section id="projects">
+          <div ref={ref}>
+            <SectionHeader
+              label="Featured Work"
+              title="Projects that ship."
+              subtitle="Two apps built from scratch — each one a distinct engineering problem with a real product outcome."
+              visible={visible}
+            />
+
+            <div style={{ marginTop: '4rem', display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+              {projects.map((p, i) => (
+                <div key={p.id} className="card" style={{
+                  opacity: visible ? 1 : 0,
+                  transform: visible ? 'none' : 'translateY(32px)',
+                  transition: `opacity 0.7s ${0.15 + i * 0.15}s ${spring}, transform 0.7s ${0.15 + i * 0.15}s ${spring}`,
+                  borderRadius: 20,
+                }}>
+                  <div style={{ padding: '2.5rem 2.5rem 0' }}>
+                    <div style={{ borderRadius: 12, overflow: 'hidden', marginBottom: '2rem', position: 'relative' }}>
+                      <ImgPlaceholder height={300} label={p.mockLabel}
+                        style={{ background: `linear-gradient(135deg, ${p.accent}18, var(--surface-2))` }} />
+                      <div style={{
+                        position: 'absolute', top: 16, left: 16,
+                        background: 'rgba(7,7,26,0.8)', backdropFilter: 'blur(12px)',
+                        border: '1px solid var(--border-strong)', borderRadius: 8,
+                        padding: '0.3rem 0.7rem',
+                        fontFamily: 'var(--font-head)', fontSize: '0.72rem', fontWeight: 600,
+                        color: 'var(--text-2)', letterSpacing: '0.1em', textTransform: 'uppercase',
+                      }}>{p.label}</div>
+                    </div>
+
+                    <div style={{ display: 'grid', gridTemplateColumns: '1fr auto', gap: '1.5rem', alignItems: 'start' }}>
+                      <div>
+                        <h3 style={{ fontFamily: 'var(--font-head)', fontSize: '1.75rem', fontWeight: 800, letterSpacing: '-0.03em', marginBottom: '0.4rem' }}>
+                          {p.name}
+                        </h3>
+                        <p style={{ color: 'var(--text-2)', fontSize: '1.05rem', fontStyle: 'italic', marginBottom: '1rem' }}>{p.tagline}</p>
+                        <p style={{ color: 'var(--text-2)', lineHeight: 1.7, fontSize: '0.95rem', maxWidth: 560 }}>{p.description}</p>
+                      </div>
+                    </div>
+
+                    <div style={{ marginTop: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                      {p.features.map((f, j) => (
+                        <div key={j} style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+                          <span style={{ width: 5, height: 5, borderRadius: '50%', background: p.accent, flexShrink: 0 }}></span>
+                          <span style={{ fontSize: '0.88rem', color: 'var(--text-2)' }}>{f}</span>
+                        </div>
+                      ))}
+                    </div>
+
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginTop: '1.25rem' }}>
+                      {p.tech.map(t => <span key={t} className="tag">{t}</span>)}
+                    </div>
+
+                    <button onClick={() => setExpanded(expanded === p.id ? null : p.id)}
+                      style={{
+                        marginTop: '1.75rem', marginBottom: '2rem',
+                        background: 'none', border: 'none', cursor: 'pointer', padding: 0,
+                        display: 'flex', alignItems: 'center', gap: '0.5rem',
+                        fontFamily: 'var(--font-head)', fontSize: '0.88rem', fontWeight: 600,
+                        color: p.accent, letterSpacing: '0.01em', transition: 'opacity 0.2s',
+                      }}>
+                      {expanded === p.id ? 'Close case study ↑' : 'Read case study ↓'}
+                    </button>
+                  </div>
+
+                  <div className={`case-study-wrap ${expanded === p.id ? 'open' : ''}`}>
+                    <div className="case-study-inner">
+                      <div style={{ borderTop: '1px solid var(--border)', padding: '2.5rem' }}>
+                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '1px', background: 'var(--border)', borderRadius: 12, overflow: 'hidden', marginBottom: '2.5rem' }}>
+                          {p.impact.map((item, j) => (
+                            <div key={j} style={{ background: 'var(--surface-2)', padding: '1.25rem 1.5rem' }}>
+                              <span style={{ fontSize: '0.82rem', color: 'var(--text-2)', lineHeight: 1.5, display: 'block' }}>{item}</span>
+                            </div>
+                          ))}
+                        </div>
+
+                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1.5rem', marginBottom: '2rem' }}>
+                          {[
+                            { label: 'Problem', text: p.problem, color: '#F87171' },
+                            { label: 'Solution', text: p.solution, color: p.accent },
+                          ].map(item => (
+                            <div key={item.label} style={{ background: 'var(--surface-3)', border: '1px solid var(--border)', borderRadius: 12, padding: '1.5rem' }}>
+                              <p style={{ fontFamily: 'var(--font-head)', fontSize: '0.68rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: item.color, marginBottom: '0.75rem' }}>{item.label}</p>
+                              <p style={{ fontSize: '0.92rem', color: 'var(--text-2)', lineHeight: 1.7 }}>{item.text}</p>
+                            </div>
+                          ))}
+                        </div>
+
+                        <div style={{ borderRadius: 12, overflow: 'hidden', marginBottom: '1.75rem' }}>
+                          <ImgPlaceholder height={200} label={p.mockLabel2}
+                            style={{ background: `linear-gradient(135deg, ${p.accent}0D, var(--surface-3))` }} />
+                        </div>
+
+                        <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
+                          <a href="#" className="btn-primary" style={{ background: p.accent, fontSize: '0.85rem', padding: '0.6rem 1.4rem' }}>
+                            View on App Store ↗
+                          </a>
+                          <a href="#contact" className="btn-ghost" style={{ fontSize: '0.85rem', padding: '0.6rem 1.4rem' }}>
+                            Discuss this project
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </Section>
+      );
+    };
+
+    /* ── Experience ── */
+    const Experience = () => {
+      const [ref, visible] = useReveal();
+      const spring = 'cubic-bezier(0.16,1,0.3,1)';
+
+      const roles = [
+        {
+          title: 'Software Development Engineer — iOS',
+          company: 'Country Delight',
+          period: 'Feb 2025 — Present',
+          type: 'Full-time · Gurugram',
+          color: '#7B79F5',
+          summary: 'Working on an instant delivery platform used by thousands daily. Led the real-time tracking and Live Activities initiatives, raising the bar for the delivery experience on iOS.',
+          metrics: [
+            { value: '20%', label: 'engagement lift from Live Activities' },
+            { value: '4.5★', label: 'App Store rating' },
+            { value: '2', label: 'engineers mentored' },
+          ],
+          bullets: [
+            'Designed map-based live order tracking in the Rapid module using real-time location updates',
+            'First on the team to ship Live Activities with ActivityKit — Lock Screen + Dynamic Island',
+            'Integrated third-party payment gateways for secure in-app transactions',
+            'Conducting interviews and mentoring interns as the team scales',
+          ],
+        },
+        {
+          title: 'iOS Developer',
+          company: 'WinZo Games',
+          period: 'Feb 2022 — Feb 2025',
+          type: 'Full-time · Delhi',
+          color: '#38BDF8',
+          summary: 'Core member of a 2-person team building a 4.4★ gaming app from early-stage. Took ownership of performance, UI modernisation, and notification systems across 3 years.',
+          metrics: [
+            { value: '99.93%', label: 'crash-free rate (up from 93%)' },
+            { value: '+42.8%', label: 'notification click-through rate' },
+            { value: '4.4★', label: 'App Store rating maintained' },
+          ],
+          bullets: [
+            'Traced and resolved memory bottlenecks via Instruments — crash-free rate 93% → 99.93%',
+            'Strategically integrated SwiftUI into existing UIKit codebase using modern declarative patterns',
+            'Redesigned notification view with rich media + interactive actions → 42.8% lift in clicks',
+            'Increased test coverage with XCTest unit and integration tests enabling safe, confident refactoring',
+          ],
+        },
+        {
+          title: 'iOS Intern',
+          company: 'WinZo Games',
+          period: 'Jul 2021 — Nov 2021',
+          type: 'Internship · Delhi',
+          color: '#4ADE80',
+          summary: 'Joined a fast-moving team mid-sprint and shipped real features from week one. Converted to a full-time role after 4 months.',
+          metrics: [
+            { value: '4 mo', label: 'internship → full-time offer' },
+            { value: '∞', label: 'code reviews survived' },
+          ],
+          bullets: [
+            'Contributed to in-house feature development across multiple product modules using Swift',
+            'Participated in code reviews and standups — absorbed real production engineering practices early',
+            'Debugged and resolved live application issues in a production iOS app',
+          ],
+        },
+      ];
+
+      return (
+        <Section id="experience" style={{ background: 'linear-gradient(180deg, transparent, rgba(123,121,245,0.03) 50%, transparent)' }}>
+          <div ref={ref}>
+            <SectionHeader
+              label="Experience"
+              title="Work that moved things."
+              subtitle="Not a list of responsibilities. A record of problems solved and outcomes shipped."
+              visible={visible}
+            />
+
+            <div style={{ marginTop: '4rem', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+              {roles.map((r, i) => (
+                <div key={i} className="card" style={{
+                  padding: '2.25rem 2.5rem',
+                  opacity: visible ? 1 : 0,
+                  transform: visible ? 'none' : 'translateY(28px)',
+                  transition: `opacity 0.7s ${0.1 + i * 0.12}s ${spring}, transform 0.7s ${0.1 + i * 0.12}s ${spring}`,
+                  borderLeft: `3px solid ${r.color}`,
+                  borderRadius: 16,
+                }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '1.25rem' }}>
+                    <div>
+                      <h3 style={{ fontFamily: 'var(--font-head)', fontSize: '1.2rem', fontWeight: 700, letterSpacing: '-0.02em', marginBottom: '0.2rem' }}>
+                        {r.title}
+                      </h3>
+                      <p style={{ color: r.color, fontFamily: 'var(--font-head)', fontWeight: 600, fontSize: '0.9rem' }}>{r.company}</p>
+                    </div>
+                    <div style={{ textAlign: 'right' }}>
+                      <p style={{ fontFamily: 'var(--font-head)', fontSize: '0.82rem', color: 'var(--text-2)', fontWeight: 500 }}>{r.period}</p>
+                      <p style={{ fontFamily: 'var(--font-head)', fontSize: '0.75rem', color: 'var(--text-3)', marginTop: '0.15rem' }}>{r.type}</p>
+                    </div>
+                  </div>
+
+                  <p style={{ fontSize: '0.95rem', color: 'var(--text-2)', lineHeight: 1.7, marginBottom: '1.75rem', maxWidth: 680 }}>
+                    {r.summary}
+                  </p>
+
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', marginBottom: '1.75rem' }}>
+                    {r.metrics.map((m, j) => (
+                      <div key={j} style={{
+                        background: `${r.color}0E`,
+                        border: `1px solid ${r.color}22`,
+                        borderRadius: 10, padding: '0.75rem 1.1rem',
+                        minWidth: 120,
+                      }}>
+                        <p style={{ fontFamily: 'var(--font-head)', fontSize: '1.4rem', fontWeight: 800, color: r.color, letterSpacing: '-0.03em', lineHeight: 1 }}>{m.value}</p>
+                        <p style={{ fontFamily: 'var(--font-head)', fontSize: '0.72rem', color: 'var(--text-3)', marginTop: '0.3rem', lineHeight: 1.4 }}>{m.label}</p>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                    {r.bullets.map((b, j) => (
+                      <div key={j} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.65rem' }}>
+                        <span style={{ marginTop: '0.5rem', width: 4, height: 4, borderRadius: '50%', background: r.color, flexShrink: 0 }}></span>
+                        <span style={{ fontSize: '0.88rem', color: 'var(--text-2)', lineHeight: 1.7 }}>{b}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </Section>
+      );
+    };
+
+    /* ── Engineering ── */
+    const Engineering = () => {
+      const [ref, visible] = useReveal();
+      const [hovered, setHovered] = useState(null);
+      const spring = 'cubic-bezier(0.16,1,0.3,1)';
+
+      const articles = [
+        {
+          num: '01',
+          title: 'From 93% to 99.93% Crash-Free',
+          subtitle: 'A story about observability, memory leaks, and why UICollectionView will humble you.',
+          readTime: '6 min read',
+          tags: ['Performance', 'UIKit', 'Instruments'],
+          preview: "The crash rate looked fine until it didn't. Here's how I traced a ghost leak through 40k stack frames and fixed it without touching a single feature.",
+          color: '#F87171',
+        },
+        {
+          num: '02',
+          title: 'Designing Real-Time Systems in iOS',
+          subtitle: 'Live Activities, WebSockets, and the art of keeping state consistent across three surfaces.',
+          readTime: '8 min read',
+          tags: ['Live Activities', 'WebSocket', 'Combine'],
+          preview: 'Building real-time delivery tracking meant reconciling three truth sources at once. This is the architecture that made it maintainable.',
+          color: '#7B79F5',
+        },
+        {
+          num: '03',
+          title: 'Infinite Scroll Without the Jank',
+          subtitle: 'How diffable data sources and prefetching eliminated frame drops in a high-velocity social feed.',
+          readTime: '5 min read',
+          tags: ['UICollectionView', 'Performance', 'Firebase'],
+          preview: "Smooth scroll feels trivial until you're diffing 500 items per second from a Firebase listener. The solution was less code, not more.",
+          color: '#4ADE80',
+        },
+      ];
+
+      return (
+        <Section id="engineering">
+          <div ref={ref}>
+            <SectionHeader
+              label="Engineering Thinking"
+              title="How I think about hard problems."
+              subtitle="Deep dives into the decisions, trade-offs, and lessons behind the work."
+              visible={visible}
+            />
+
+            <div style={{ marginTop: '3.5rem', display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '1.25rem' }}>
+              {articles.map((a, i) => (
+                <div key={i}
+                  onMouseEnter={() => setHovered(i)}
+                  onMouseLeave={() => setHovered(null)}
+                  style={{
+                    background: hovered === i ? 'var(--surface-2)' : 'var(--surface)',
+                    border: `1px solid ${hovered === i ? 'var(--border-strong)' : 'var(--border)'}`,
+                    borderRadius: 16, padding: '2rem',
+                    cursor: 'pointer',
+                    transition: `all 0.25s ${spring}`,
+                    transform: hovered === i ? 'translateY(-4px)' : 'none',
+                    boxShadow: hovered === i ? '0 20px 60px rgba(0,0,0,0.3)' : 'none',
+                    opacity: visible ? 1 : 0,
+                    transitionDelay: `${0.1 + i * 0.1}s`,
+                    position: 'relative', overflow: 'hidden',
+                  }}>
+
+                  <div style={{
+                    position: 'absolute', top: 0, left: 0, right: 0, height: 2,
+                    background: `linear-gradient(90deg, transparent, ${a.color}, transparent)`,
+                    opacity: hovered === i ? 1 : 0,
+                    transition: 'opacity 0.25s',
+                  }} />
+
+                  <p style={{
+                    fontFamily: 'var(--font-head)', fontSize: '0.68rem', fontWeight: 700,
+                    letterSpacing: '0.15em', color: a.color, marginBottom: '1.25rem',
+                  }}>{a.num}</p>
+
+                  <h3 style={{
+                    fontFamily: 'var(--font-head)', fontSize: '1.15rem', fontWeight: 700,
+                    letterSpacing: '-0.02em', lineHeight: 1.25, marginBottom: '0.6rem', color: 'var(--text)',
+                  }}>{a.title}</h3>
+
+                  <p style={{ fontSize: '0.85rem', color: 'var(--text-2)', lineHeight: 1.65, marginBottom: '1.25rem' }}>
+                    {hovered === i ? a.preview : a.subtitle}
+                  </p>
+
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem', marginBottom: '1.5rem' }}>
+                    {a.tags.map(t => <span key={t} className="tag">{t}</span>)}
+                  </div>
+
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                    <span style={{ fontFamily: 'var(--font-head)', fontSize: '0.75rem', color: 'var(--text-3)' }}>{a.readTime}</span>
+                    <span style={{
+                      fontFamily: 'var(--font-head)', fontSize: '0.8rem', fontWeight: 600,
+                      color: a.color, opacity: hovered === i ? 1 : 0.5, transition: 'opacity 0.2s',
+                    }}>Read →</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </Section>
+      );
+    };
+
+    /* ── Skills ── */
+    const Skills = () => {
+      const [ref, visible] = useReveal();
+      const spring = 'cubic-bezier(0.16,1,0.3,1)';
+
+      const groups = [
+        { label: 'Languages', color: '#7B79F5', items: ['Swift', 'Objective-C', 'Kotlin', 'Dart'] },
+        { label: 'UI Frameworks', color: '#C084FC', items: ['SwiftUI', 'UIKit', 'AppKit'] },
+        { label: 'Architecture', color: '#38BDF8', items: ['MVVM', 'MVC', 'Modular Architecture'] },
+        { label: 'Data & Backend', color: '#4ADE80', items: ['Firebase', 'Firestore', 'REST APIs', 'JSON', 'URLSession', 'Core Data'] },
+        { label: 'System Frameworks', color: '#FB923C', items: ['ActivityKit', 'MapKit', 'XCTest', 'Speech', 'CoreHaptics', 'AVFoundation', 'WidgetKit'] },
+        { label: 'Tooling & Practice', color: '#F472B6', items: ['Xcode', 'Instruments', 'Git', 'Agile', 'Code Review', 'Performance Optimization'] },
+      ];
+
+      const depthItems = [
+        { label: 'Performance Profiling & Optimization', pct: 97 },
+        { label: 'UIKit & SwiftUI', pct: 93 },
+        { label: 'Real-time Systems & Live Activities', pct: 90 },
+        { label: 'Firebase & API Integration', pct: 88 },
+        { label: 'Testing (XCTest)', pct: 82 },
+        { label: 'Architecture & Modularity', pct: 85 },
+      ];
+
+      return (
+        <Section id="skills" style={{ background: 'linear-gradient(180deg, transparent, rgba(123,121,245,0.03) 50%, transparent)' }}>
+          <div ref={ref}>
+            <SectionHeader
+              label="Skills"
+              title="Depth over breadth."
+              subtitle="I focus on doing a few things really well — then connecting them into products that hold together."
+              visible={visible}
+            />
+
+            <div style={{
+              marginTop: '3.5rem',
+              display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: '1rem',
+            }}>
+              {groups.map((g, i) => (
+                <div key={g.label} style={{
+                  background: 'var(--surface)',
+                  border: '1px solid var(--border)',
+                  borderRadius: 14, padding: '1.4rem 1.5rem',
+                  opacity: visible ? 1 : 0,
+                  transform: visible ? 'none' : 'translateY(20px)',
+                  transition: `opacity 0.65s ${0.08 + i * 0.06}s ${spring}, transform 0.65s ${0.08 + i * 0.06}s ${spring}`,
+                }}>
+                  <p style={{
+                    fontFamily: 'var(--font-head)', fontSize: '0.68rem', fontWeight: 700,
+                    letterSpacing: '0.14em', textTransform: 'uppercase',
+                    color: g.color, marginBottom: '0.9rem',
+                  }}>{g.label}</p>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem' }}>
+                    {g.items.map(item => (
+                      <span key={item} style={{
+                        display: 'inline-flex', padding: '0.26rem 0.65rem',
+                        background: `${g.color}12`, border: `1px solid ${g.color}28`,
+                        borderRadius: 7, fontFamily: 'var(--font-head)',
+                        fontSize: '0.78rem', fontWeight: 500, color: 'var(--text)',
+                        letterSpacing: '0.01em',
+                      }}>{item}</span>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div style={{
+              marginTop: '2.5rem',
+              background: 'var(--surface)', border: '1px solid var(--border)',
+              borderRadius: 16, padding: '2rem 2.5rem',
+              opacity: visible ? 1 : 0,
+              transform: visible ? 'none' : 'translateY(20px)',
+              transition: `opacity 0.65s 0.5s ${spring}, transform 0.65s 0.5s ${spring}`,
+            }}>
+              <p className="section-label" style={{ marginBottom: '1.5rem' }}>Depth</p>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1.1rem' }}>
+                {depthItems.map((d, i) => (
+                  <div key={d.label}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.4rem' }}>
+                      <span style={{ fontFamily: 'var(--font-head)', fontSize: '0.85rem', fontWeight: 500, color: 'var(--text)' }}>{d.label}</span>
+                      <span style={{ fontFamily: 'var(--font-head)', fontSize: '0.78rem', color: 'var(--text-3)' }}>{d.pct}%</span>
+                    </div>
+                    <div style={{ height: 4, background: 'var(--surface-3)', borderRadius: 4, overflow: 'hidden' }}>
+                      <div style={{
+                        height: '100%', borderRadius: 4,
+                        background: `linear-gradient(90deg, var(--accent), #B8B6FF)`,
+                        width: visible ? `${d.pct}%` : '0%',
+                        transition: `width 1s ${0.6 + i * 0.1}s cubic-bezier(0.16,1,0.3,1)`,
+                      }} />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </Section>
+      );
+    };
+
+    /* ── Contact ── */
+    const Contact = () => {
+      const [ref, visible] = useReveal();
+      const [copied, setCopied] = useState(false);
+      const spring = 'cubic-bezier(0.16,1,0.3,1)';
+      const email = 'gp.juit@outlook.com';
+
+      const handleCopy = () => {
+        navigator.clipboard.writeText(email).then(() => {
+          setCopied(true);
+          setTimeout(() => setCopied(false), 2000);
+        });
+      };
+
+      return (
+        <Section id="contact" style={{ paddingBottom: 160 }}>
+          <div ref={ref}>
+            <div style={{
+              textAlign: 'center', maxWidth: 640, margin: '0 auto',
+              opacity: visible ? 1 : 0, transform: visible ? 'none' : 'translateY(28px)',
+              transition: `opacity 0.8s ${spring}, transform 0.8s ${spring}`,
+            }}>
+              <p className="section-label" style={{ justifyContent: 'center', display: 'flex' }}>Let's Talk</p>
+
+              <h2 style={{
+                fontFamily: 'var(--font-head)', fontSize: 'clamp(2.2rem, 5vw, 3.5rem)',
+                fontWeight: 900, letterSpacing: '-0.04em', lineHeight: 1.08,
+                marginTop: '0.75rem', marginBottom: '1.25rem',
+              }}>
+                Open to great<br />
+                <span style={{
+                  background: 'linear-gradient(135deg, #7B79F5, #B8B6FF)',
+                  WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
+                }}>opportunities.</span>
+              </h2>
+
+              <p style={{ color: 'var(--text-2)', fontSize: '1.05rem', lineHeight: 1.7, marginBottom: '2.5rem' }}>
+                Looking for a product-focused iOS engineer who cares about craft, performance, and shipping things that matter? I'm interested in full-time roles and meaningful freelance work.
+              </p>
+
+              <div style={{
+                display: 'inline-flex', alignItems: 'center', gap: '1rem',
+                background: 'var(--surface)', border: '1px solid var(--border-strong)',
+                borderRadius: 14, padding: '1rem 1.5rem',
+                marginBottom: '1.5rem', flexWrap: 'wrap', justifyContent: 'center',
+              }}>
+                <span style={{ fontFamily: 'var(--font-head)', fontSize: '1rem', fontWeight: 500, color: 'var(--text)' }}>
+                  {email}
+                </span>
+                <button onClick={handleCopy} className="btn-primary" style={{ fontSize: '0.8rem', padding: '0.5rem 1.1rem' }}>
+                  {copied ? 'Copied ✓' : 'Copy'}
+                </button>
+              </div>
+
+              <div style={{ display: 'flex', gap: '0.85rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+                <a href="https://www.linkedin.com/in/guri02" target="_blank" rel="noreferrer" className="btn-ghost" style={{ fontSize: '0.85rem', padding: '0.6rem 1.4rem' }}>
+                  LinkedIn ↗
+                </a>
+                <a href="https://github.com/gp-juit" target="_blank" rel="noreferrer" className="btn-ghost" style={{ fontSize: '0.85rem', padding: '0.6rem 1.4rem' }}>
+                  GitHub ↗
+                </a>
+                <a href="https://drive.google.com/file/d/1YBb6pn2k1xuyAGaAOxZpccuIfwhP9eaJ/view?usp=drive_link" target="_blank" rel="noreferrer" className="btn-ghost" style={{ fontSize: '0.85rem', padding: '0.6rem 1.4rem' }}>
+                  Resume ↗
+                </a>
+              </div>
+            </div>
+
+            <div style={{
+              marginTop: '6rem', paddingTop: '2rem', borderTop: '1px solid var(--border)',
+              display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+              flexWrap: 'wrap', gap: '1rem',
+              opacity: visible ? 1 : 0, transition: `opacity 0.8s 0.3s`,
+            }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+                <div style={{
+                  width: 28, height: 28, borderRadius: 7, background: 'var(--accent)',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  fontFamily: 'var(--font-head)', fontSize: '0.78rem', fontWeight: 800, color: 'white',
+                }}>GS</div>
+                <span style={{ fontFamily: 'var(--font-head)', fontSize: '0.88rem', fontWeight: 600, color: 'var(--text)' }}>Gurpreet Singh</span>
+              </div>
+              <p style={{ fontFamily: 'var(--font-head)', fontSize: '0.78rem', color: 'var(--text-3)' }}>
+                iOS Engineer · Swift · SwiftUI · Building things that feel inevitable
+              </p>
+            </div>
+          </div>
+        </Section>
+      );
+    };
+
+    /* ── App ── */
+    const App = () => (
+      <React.Fragment>
+        <Nav />
+        <Hero />
+        <Projects />
+        <Experience />
+        <Engineering />
+        <Skills />
+        <Contact />
+      </React.Fragment>
+    );
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
+  </script>
 </body>
-
 </html>
