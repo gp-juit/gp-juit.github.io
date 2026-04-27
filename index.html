@@ -480,6 +480,7 @@
       const projects = [
         {
           id: 'breatheout',
+          appStoreUrl: 'https://apps.apple.com/us/app/breatheout-mind-space/id6762250362',
           label: 'Mental Health · iOS App',
           name: 'BreatheOut',
           tagline: 'The journaling app that listens before it reads.',
@@ -530,8 +531,15 @@
                 }}>
                   <div style={{ padding: '2.5rem 2.5rem 0' }}>
                     <div style={{ borderRadius: 12, overflow: 'hidden', marginBottom: '2rem', position: 'relative' }}>
-                      <ImgPlaceholder height={300} label={p.mockLabel}
-                        style={{ background: `linear-gradient(135deg, ${p.accent}18, var(--surface-2))` }} />
+                      {p.id === 'breatheout' ? (
+                        <div style={{ height: 300, background: `linear-gradient(135deg, ${p.accent}18, var(--surface-2))`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                          <img src="breatheout-icon.png" alt="BreatheOut" style={{ width: 180, height: 180, borderRadius: 36, boxShadow: '0 20px 60px rgba(123,121,245,0.4)' }} />
+                        </div>
+                      ) : (
+                        <div style={{ height: 300, background: `linear-gradient(135deg, ${p.accent}18, var(--surface-2))`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                          <img src="aromaclub-icon.png" alt="Aroma Club" style={{ width: 180, height: 180, borderRadius: 36, boxShadow: '0 20px 60px rgba(192,132,252,0.4)' }} />
+                        </div>
+                      )}
                       <div style={{
                         position: 'absolute', top: 16, left: 16,
                         background: 'rgba(7,7,26,0.8)', backdropFilter: 'blur(12px)',
@@ -564,6 +572,14 @@
                     <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginTop: '1.25rem' }}>
                       {p.tech.map(t => <span key={t} className="tag">{t}</span>)}
                     </div>
+
+                    {p.appStoreUrl && (
+                      <div style={{ marginTop: '1.5rem', paddingBottom: '2rem' }}>
+                        <a href={p.appStoreUrl} target="_blank" rel="noreferrer" className="btn-primary" style={{ background: p.accent, fontSize: '0.85rem', padding: '0.6rem 1.4rem' }}>
+                          View on App Store ↗
+                        </a>
+                      </div>
+                    )}
 
                   </div>
 
